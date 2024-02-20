@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server";
 import { getConnectedAddressForUser } from "@/utils/fc";
 import { mintNft, balanceOf } from "@/utils/mint";
 
@@ -14,7 +14,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       post_url: `${process.env.BASE_URL}/frame`,
       buttons: [{ label: "Mint NFT", action: "post" }],
       aspect_ratio: "1:1",
-      cid: "QmSYN7KT847Nado3fxFafYZgG6NXTMZwbaMvU9jhu5nPmJ",
+      cid: "QmWT6H9hNUzgLUSbGFuCJV58eQifQTpKE2KynWqwtwrTGv",
     });
     return new NextResponse(frameMetadata);
   } catch (error) {
@@ -25,7 +25,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const body = await req.json();
-// sourcery skip: use-object-destructuring
+  // sourcery skip: use-object-destructuring
   const fid = body.untrustedData.fid;
   const address = await getConnectedAddressForUser(fid);
   const balance = await balanceOf(address);
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         post_url: `${process.env.BASE_URL}/redirect`,
         buttons: [{ label: "Learn How to Make This", action: "post_redirect" }],
         aspect_ratio: "1:1",
-        cid: "QmUx3kQH4vR2t7mTmW3jHJgJgJGxjoBsMxt6z1fkZEHyHJ",
+        cid: "QmWT6H9hNUzgLUSbGFuCJV58eQifQTpKE2KynWqwtwrTGv",
       });
       return new NextResponse(frameMetadata);
     } catch (error) {
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       post_url: `${process.env.BASE_URL}/redirect`,
       buttons: [{ label: "Learn How to Make This", action: "post_redirect" }],
       aspect_ratio: "1:1",
-      cid: "QmaaEbtsetwamJwfFPAQAFC6FAE1xeYsvF7EBKA8NYMjP2",
+      cid: "QmWT6H9hNUzgLUSbGFuCJV58eQifQTpKE2KynWqwtwrTGv",
     });
     return new NextResponse(frameMetadata);
   }
