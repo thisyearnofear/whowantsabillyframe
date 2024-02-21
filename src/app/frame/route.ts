@@ -30,7 +30,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
   const address = await getConnectedAddressForUser(fid);
   const balance = await balanceOf(address);
   console.log(balance);
-  if (typeof balance === "number" && balance !== null && balance < 1) {
+  // Change the condition here to check if balance is less than 5
+  if (typeof balance === "number" && balance !== null && balance < 5) {
     try {
       const mint = await mintNft(address);
       console.log(mint);
